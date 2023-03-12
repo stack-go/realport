@@ -2,7 +2,7 @@ displayName: x-real-port plugin
 type: middleware
 iconPath: .assets/icon.png
 
-import: github.com/stack-go/x-real-port
+import: github.com/stack-go/realport
 
 summary: '[Demo] Add X-Real-Port Header'
 

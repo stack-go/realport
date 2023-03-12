@@ -1,3 +1,3 @@
-module github.com/stack-go/x-real-port
+module github.com/stack-go/realport
 
 go 1.19
