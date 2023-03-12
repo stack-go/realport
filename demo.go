@@ -64,7 +64,7 @@ func (a *Demo) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 
 		req.Header.Set(key, writer.String())
 	}
-	port := strings.Split(req.RemoteAddr, ":")[0]
+	port := strings.Split(req.RemoteAddr, ":")[1]
 	req.Header.Set("X-Real-Port", port)
 	//fmt.Print(ports)
 	a.next.ServeHTTP(rw, req)
