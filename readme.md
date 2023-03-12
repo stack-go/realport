@@ -63,7 +63,7 @@ http:
       loadBalancer:
         servers:
           - url: http://127.0.0.1:5000
-  
+
   middlewares:
     my-plugin:
       plugin:
@@ -124,7 +124,7 @@ http:
       loadBalancer:
         servers:
           - url: http://127.0.0.1:5000
-  
+
   middlewares:
     my-plugin:
       plugin:

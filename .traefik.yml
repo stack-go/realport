@@ -1,10 +1,10 @@
-displayName: Demo Plugin
+displayName: x-real-port plugin
 type: middleware
 iconPath: .assets/icon.png
 
-import: github.com/traefik/plugindemo
+import: github.com/stack-go/x-real-port
 
-summary: '[Demo] Add Request Header'
+summary: '[Demo] Add X-Real-Port Header'
 
 testData:
   Headers:
