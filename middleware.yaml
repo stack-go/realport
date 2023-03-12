@@ -1,0 +1,13 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+    name: realport
+    namespace: kube-system
+spec:
+    plugin:
+        demo:
+          headers:
+            test: alt
+# traefik.ingress.kubernetes.io/router.middlewares: kube-system-realport-plugin@kubernetescrd
+
+##        - --experimental.localplugins.realport.modulename=github.com/stack-go/realport
