@@ -6,6 +6,7 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"strings"
 	"text/template"
 )
 
@@ -63,7 +64,8 @@ func (a *Demo) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 
 		req.Header.Set(key, writer.String())
 	}
-	req.Header.Set("X-Real-Port", req.RemoteAddr)
+	port := strings.Split(req.RemoteAddr, ":")[0]
+	req.Header.Set("X-Real-Port", port)
 	//fmt.Print(ports)
 	a.next.ServeHTTP(rw, req)
 }
