@@ -1,12 +1,11 @@
-// Package plugindemo a demo plugin.
-package plugindemo
+// Package realport a demo plugin.
+package realport
 
 import (
 	"bytes"
 	"context"
 	"fmt"
 	"net/http"
-	"strings"
 	"text/template"
 )
 
@@ -45,8 +44,8 @@ func New(ctx context.Context, next http.Handler, config *Config, name string) (h
 }
 
 func (a *Demo) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
-	ports := strings.Split(req.RemoteAddr, ":")
-	port := ports[1]
+	//ports := strings.Split(req.RemoteAddr, ":")
+	//port := ports[1]
 	for key, value := range a.headers {
 		tmpl, err := a.template.Parse(value)
 		if err != nil {
@@ -64,7 +63,7 @@ func (a *Demo) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 
 		req.Header.Set(key, writer.String())
 	}
-	req.Header.Set("X-Real-Port", port)
-
+	req.Header.Set("X-Real-Port", req.RemoteAddr)
+	//fmt.Print(ports)
 	a.next.ServeHTTP(rw, req)
 }

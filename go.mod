@@ -1,3 +1,3 @@
-module github.com/traefik/plugindemo
+module github.com/stack-go/realport
 
 go 1.19

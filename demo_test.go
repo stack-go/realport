@@ -1,16 +1,17 @@
-package plugindemo_test
+package realport_test
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"testing"
 
-	"github.com/traefik/plugindemo"
+	"github.com/stack-go/realport"
 )
 
 func TestDemo(t *testing.T) {
-	cfg := plugindemo.CreateConfig()
+	cfg := realport.CreateConfig()
 	cfg.Headers["X-Host"] = "[[.Host]]"
 	cfg.Headers["X-Method"] = "[[.Method]]"
 	cfg.Headers["X-URL"] = "[[.URL]]"
@@ -20,7 +21,7 @@ func TestDemo(t *testing.T) {
 	ctx := context.Background()
 	next := http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {})
 
-	handler, err := plugindemo.New(ctx, next, cfg, "demo-plugin")
+	handler, err := realport.New(ctx, next, cfg, "demo-plugin")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -33,6 +34,7 @@ func TestDemo(t *testing.T) {
 	}
 
 	handler.ServeHTTP(recorder, req)
+	fmt.Println(req.URL.Host)
 
 	assertHeader(t, req, "X-Host", "localhost")
 	assertHeader(t, req, "X-URL", "http://localhost")

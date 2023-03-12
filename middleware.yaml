@@ -5,7 +5,7 @@ metadata:
     namespace: kube-system
 spec:
     plugin:
-        demo:
+        realport:
           headers:
             test: alt
 # traefik.ingress.kubernetes.io/router.middlewares: kube-system-realport-plugin@kubernetescrd
