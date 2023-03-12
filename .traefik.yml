@@ -2,7 +2,7 @@ displayName: Demo Plugin
 type: middleware
 iconPath: .assets/icon.png
 
-import: github.com:stack-go/realport
+import: github.com/stack-go/realport
 
 summary: '[Demo] Add Request Header'
 
